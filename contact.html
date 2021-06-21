@@ -18,15 +18,26 @@
 			localStorage.clear();
 		});
 		function validate() {
-			if (infoContact["fullName"].value == "") {
+
+			var n = infoContact["fullName"];
+			var e = infoContact["email"];
+			if (n.value == "") {
 
 				alert("Please provide your name!");
-				infoContact["fullName"].focus();
+				n.focus();
 				return false;
 			}
-			if (infoContact["email"].value == "") {
+			if (e.value == "") {
 				alert("Please provide your Email!");
-				infoContact["email"].focus();
+				e.focus();
+				return false;
+			}
+
+			// Allow A-Z, a-z, 0-9 and underscore. Min 1 char.
+			var pattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+			if (!pattern.test(e.value)) {
+				alert("Please type valid Email!");
+				e.focus();
 				return false;
 			}
 
@@ -118,19 +129,19 @@
 									<form name="infoContact" action="index.html" onsubmit="return validate()">
 										<p class="form-item"><label for="fullName">FULL NAME*</label>
 											<input type="text" name="fullName" class="textbox"
-												placeholder="e.g. robert smith" required>
+												placeholder="e.g. robert smith">
 										</p>
 										<p class="form-item"><label for="email">EMAIL*</label>
 											<input type="text" name="email" class="textbox"
-												placeholder="e.g. name@nome.com"
-												pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+												placeholder="e.g. name@nome.com">
 										</p>
 										<p class="form-item"><label for="company">COMPANY</label>
 											<input type="text" class="textbox" name="company"
 												placeholder="e.g. your company (optional)" maxlength="50">
 										</p>
 										<p class="form-item"><label for="subject">SUBJECT</label>
-											<input type="text" name="subject" class="textbox" placeholder="e.g. info" maxlength="150">
+											<input type="text" name="subject" class="textbox" placeholder="e.g. info"
+												maxlength="150">
 										</p>
 										<p class="form-item"><label for="message">Message</label>
 											<textarea name="message" maxlength="500"></textarea>

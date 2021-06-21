@@ -1,2 +1,6 @@
 # Surfhouse_Tamplate
-This is a task in my intership
+
+### - install json-server
+### - json-server --watch data/db.json
+
+And view.

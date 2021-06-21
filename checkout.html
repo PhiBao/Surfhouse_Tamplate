@@ -17,16 +17,124 @@
 		$(document).ready(function () {
 			localStorage.clear();
 		});
-		function validate() {
-			if (infoContact["fullName"].value == "") {
 
-				alert("Please provide your name!");
-				infoContact["fullName"].focus();
+		function validateLogin() {
+
+			var email = loginForm["email"];
+			var pwd = loginForm["pwd"];
+			if (email.value == "") {
+
+				alert("Please provide your email!");
+				email.focus();
 				return false;
 			}
-			if (infoContact["email"].value == "") {
-				alert("Please provide your Email!");
-				infoContact["email"].focus();
+			if (pwd.value == "") {
+				alert("Please provide your password!");
+				pwd.focus();
+				return false;
+			}
+
+			var patternEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+			var patternPwd = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
+			if (!patternEmail.test(email.value)) {
+				alert("Please type valid email!");
+				email.focus();
+				return false;
+			}
+			if (!patternPwd.test(pwd.value)) {
+				alert("Please type valid password!");
+				pwd.focus();
+				return false;
+			}
+
+			return true;
+		}
+
+		function validateInfo() {
+
+			var email = infoShipped["email"];
+			var fname = infoShipped["fname"];
+			var sname = infoShipped["sname"];
+			var add1 = infoShipped["add1"];
+			var add2 = infoShipped["add2"];
+			var postalCode = infoShipped["postalCode"];
+			var city = infoShipped["city"];
+			var state = infoShipped["state"];
+			var province = infoShipped["province"];
+			var mobile = infoShipped["mobile"];
+			var ccn = infoShipped["ccn"];
+			var ccv = infoShipped["ccv"];
+			var noc = infoShipped["noc"];
+
+			if (email.value == "") {
+				alert("Please provide your email!");
+				email.focus();
+				return false;
+			}
+			if (fname.value == "") {
+				alert("Please provide your first name!");
+				fname.focus();
+				return false;
+			}
+			if (sname.value == "") {
+				alert("Please provide your surname!");
+				sname.focus();
+				return false;
+			}
+			if (add1.value == "" && add2.value == "") {
+				alert("Please provide at least one address!");
+				add1.focus();
+				return false;
+			}
+			if (postalCode.value == "") {
+				alert("Please provide your postal code!");
+				postalCode.focus();
+				return false;
+			}
+
+			if (city.value == "") {
+				alert("Please provide your city/town!");
+				city.focus();
+				return false;
+			}
+
+			if (state.value == "") {
+				alert("Please provide your country/state!");
+				state.focus();
+				return false;
+			}
+			if (province.value == "") {
+				alert("Please provide your province!");
+				province.focus();
+				return false;
+			}
+			if (mobile.value == "") {
+				alert("Please provide your mobile!");
+				mobile.focus();
+				return false;
+			}
+			if (ccn.value == "") {
+				alert("Please provide your credit card number!");
+				ccn.focus();
+				return false;
+			}
+			if (ccv.value == "") {
+				alert("Please provide your ccv!");
+				ccv.focus();
+				return false;
+			}
+			if (noc.value == "") {
+				alert("Please provide your name on card!");
+				noc.focus();
+				return false;
+			}
+
+			var patternEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
+			if (!patternEmail.test(email.value)) {
+				alert("Please type valid Email!");
+				email.focus();
 				return false;
 			}
 
@@ -71,16 +179,16 @@
 						<div class="menu_box">
 							<h3 class="menu_head">Menu</h3>
 							<ul class="nav">
-								<li><a href="apparel.html">About</a></li>
-								<li><a href="apparel.html">Apparel</a></li>
-								<li><a href="apparel.html">Surf Apparel</a></li>
-								<li><a href="apparel.html">Windsurf</a></li>
-								<li><a href="apparel.html">Kitesurf</a></li>
-								<li><a href="apparel.html">Accessories</a></li>
-								<li><a href="apparel.html">Sale</a></li>
-								<li><a href="apparel.html">Brands</a></li>
-								<li><a href="apparel.html">Blog</a></li>
-								<li><a href="apparel.html">Gadgets</a></li>
+								<li><a href="shop-cat-grid.html">About</a></li>
+								<li><a href="shop-cat-grid.html">Apparel</a></li>
+								<li><a href="shop-cat-grid.html">Surf Apparel</a></li>
+								<li><a href="shop-cat-grid.html">Windsurf</a></li>
+								<li><a href="shop-cat-grid.html">Kitesurf</a></li>
+								<li><a href="shop-cat-grid.html">Accessories</a></li>
+								<li><a href="shop-cat-grid.html">Sale</a></li>
+								<li><a href="shop-cat-grid.html">Brands</a></li>
+								<li><a href="shop-cat-grid.html">Blog</a></li>
+								<li><a href="shop-cat-grid.html">Gadgets</a></li>
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
@@ -170,18 +278,16 @@
 							<div class="lcontact span_3_of_checkout_right">
 								<p class="title-checkout">ARE YOU A<br><b style="font-size: 2rem;">MEMBER?</b></p>
 								<p>Already registered?<br><span style="color: #777;">Please log in below</span></p>
-								<form method="post" action="index.html">
+								<form name="loginForm" action="index.html" method="GET"
+									onsubmit="return validateLogin()">
 									<div style="margin-top: 1.5rem;" class="contact-form">
 										<p class="form-item"><label for="email">Email Address<span
 													style="color: red">*</span></label>
-											<input type="text" name="email" class="textbox"
-												pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+											<input type="text" name="email" class="textbox">
 										</p>
-										<p class="form-item"><label for="pass">Password<span
+										<p class="form-item"><label for="pwd">Password<span
 													style="color: red">*</span></label>
-											<input type="password" name="pass" class="textbox"
-												pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Invalid password!"
-												required>
+											<input type="password" name="pwd" class="textbox">
 										</p>
 									</div>
 									<div class="sub-option">
@@ -189,7 +295,8 @@
 										<div><u><i>Forgot your password?</i></u></span></div>
 									</div>
 									<div style="margin-left: 3.3rem; margin-top: 7.5rem;">
-										<input style="width: 80%" class="btn btn-primary" type="submit" id="submit" value="LOGIN">
+										<input style="width: 80%" class="btn btn-primary" type="submit" id="submit"
+											value="LOGIN">
 									</div>
 								</form>
 							</div>
@@ -223,20 +330,19 @@
 							<div class="clearfix"></div>
 						</div>
 						<div class="singel_right">
-							<form name="infoShipped" action="index.html" onsubmit="return validate()">
+							<form name="infoShipped" method="GET" action="index.html" onsubmit="return validateInfo()">
 								<div class="lcontact span_3_of_checkout_right">
 									<h3>YOUR SHIPPING INFORMATION</h3>
 									<div class="contact-form">
 										<p class="form-item"><label for="email">EMAIL*</label>
 											<input type="text" name="email" class="textbox"
-												placeholder="e.g. name@gmail.com"
-												pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+												placeholder="e.g. name@gmail.com">
 										</p>
 										<p class="form-item"><label for="fname">FULL NAME*</label>
 											<input style="margin-bottom: 0.8rem;" type="text" name="fname"
-												class="textbox" placeholder="first name" maxlength="50" required>
+												class="textbox" placeholder="first name" maxlength="50">
 											<input type="text" name="sname" maxlength="50" class="textbox"
-												placeholder="surname" required>
+												placeholder="surname">
 										</p>
 										<p class="form-item"><label for="company">COMPANY</label>
 											<input type="text" class="textbox" name="company"
@@ -244,9 +350,9 @@
 										</p>
 										<p class="form-item"><label for="add1">ADDRESS*</label>
 											<input style="margin-bottom: 0.8rem;" type="text" name="add1"
-												class="textbox" placeholder="address line 1" required>
-											<input type="text" name="add2" class="textbox" placeholder="address line 2"
-												required>
+												class="textbox" placeholder="address line 1" maxlength="100">
+											<input type="text" name="add2" class="textbox" maxlength="100"
+												placeholder="address line 2">
 										</p>
 									</div>
 								</div>
@@ -254,30 +360,31 @@
 									<div class="contact-form" style="margin-top: 3.8125rem;">
 										<p class="form-item"><label for="postalCode">POSTAL CODE*</label>
 											<input type="number" name="postalCode" class="textbox"
-												placeholder="e.g. 201000" required>
+												oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+												placeholder="e.g. 201000" maxlength="10">
 										</p>
 										<p class="form-item"><label for="city">TOWN/CITY*</label>
 											<input type="text" name="city" class="textbox"
-												placeholder="e.g. Los Angeles" maxlength="50" required>
+												placeholder="e.g. Los Angeles" maxlength="50">
 										</p>
 										<p class="form-item"><label for="state">STATE/COUNTRY*</label>
 											<select name="state">
 												<option value="" selected disabled hidden>select</option>
-												<option>Vietnam</option>
-												<option>American</option>
-												<option>Germany</option>
-												<option>Japan</option>
-												<option>England</option>
+												<option value="1">Vietnam</option>
+												<option value="2">American</option>
+												<option value="3">Germany</option>
+												<option value="4">Japan</option>
+												<option value="5">England</option>
 											</select>
 										</p>
 										<p class="form-item"><label for="province">PROVINCE</label>
 											<select name="province">
 												<option value="" selected disabled hidden>select</option>
-												<option>Đà Nẵng</option>
-												<option>Los Angeles</option>
-												<option>München</option>
-												<option>Tokyo</option>
-												<option>London</option>
+												<option value="1">Đà Nẵng</option>
+												<option value="2">Los Angeles</option>
+												<option value="3">München</option>
+												<option value="4">Tokyo</option>
+												<option value="5">London</option>
 											</select>
 										</p>
 
@@ -289,17 +396,20 @@
 												<option>+36</option>
 												<option>+35</option>
 											</select>
-											<input style="width: 63%; display: inline;" type="text" name="mobile"
-												class="textbox" placeholder="phone" required>
+											<input style="width: 63%; display: inline;" type="number" name="mobile"
+												class="textbox"
+												oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+												maxlength="10" placeholder="phone">
 										</p>
 									</div>
 								</div>
 								<div class="contact_grid span_3_of_checkout_right">
 									<h3>YOUR PAYMENT DETAILS</h3>
 									<div class="contact-form">
-										<p class="form-item"><label for="postalCode">CREDIT CARD NUMBER*</label>
-											<input type="number" name="postalCode" class="textbox"
-												placeholder="e.g. 201000" required>
+										<p class="form-item"><label for="ccn">CREDIT CARD NUMBER*</label>
+											<input type="number" name="ccn" class="textbox" placeholder="e.g. 201000"
+												oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+												maxlength="15">
 										</p>
 										<p class="form-item">
 											<img src="assets/images/payment-method.png" class="img-responsive" alt="" />
@@ -330,12 +440,15 @@
 										</p>
 										<p class="form-item"><label for="ccv">SECURE CODE (CCV)*</label>
 											<input style="width: 55%; display: inline;" type="number" name="ccv"
-												class="textbox" placeholder="000" required>
+												class="textbox"
+												oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+												placeholder="000" maxlength="3">
 											<a href="#" style="margin-left: 1rem;"><span><i><u>What is
 															this?</u></i></span></a>
 										</p>
-										<p class="form-item"><label for="nameOC">NAME ON CARD*</label>
-											<input type="text" name="nameOC" class="textbox" placeholder="000" required>
+										<p class="form-item"><label for="noc">NAME ON CARD*</label>
+											<input type="text" name="noc" class="textbox" placeholder="name on card"
+												maxlength="50">
 										</p>
 										<p class="form-item" style="position: absolute; bottom: 5rem;"><i>We value your
 												privacy</i>

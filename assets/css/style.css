@@ -314,7 +314,7 @@ ul.previous li a {
 .mens-toolbar .pages {
   margin: 0;
 }
-ul.women_pagenation.dc_paginationA.dc_paginationA06 {
+ul.pagination {
   float: right;
   padding: 0;
   list-style: none;
@@ -332,14 +332,14 @@ ul.women_pagenation.dc_paginationA.dc_paginationA06 {
   margin: 0 0 1px;
   vertical-align: middle;
 }
-ul.women_pagenation li {
+ul.pagination li {
   float: left;
   margin: 0px;
   margin-left: 5px;
   padding: 0px;
   list-style: none;
 }
-ul.women_pagenation li a {
+ul.pagination li a {
   color: #000;
   display: block;
   padding: 4px 8px;
@@ -347,11 +347,11 @@ ul.women_pagenation li a {
   font-size: 0.8125em;
   text-transform: uppercase;
 }
-ul.women_pagenation li.active a {
+ul.pagination li.active a {
   background: #26d2fc;
   color: #fff;
 }
-ul.women_pagenation li a:hover {
+ul.pagination li a:hover {
   background: #26d2fc;
   color: #fff;
 }
