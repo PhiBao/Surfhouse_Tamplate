@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Surfhouse Contact</title>
+	<link href="assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="assets/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="assets/css/header.css" rel='stylesheet' type='text/css' />
+	<link href="assets/css/footer.css" rel='stylesheet' type='text/css' />
+	<link href="assets/css/nav-bar.css" rel='stylesheet' type='text/css' />
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--webfont-->
+	<link href='//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900' rel='stylesheet'
+		type='text/css'>
+	<script type='text/javascript'>
+		$(document).ready(function () {
+			localStorage.clear();
+		});
+		function validate() {
+			if (infoContact["fullName"].value == "") {
+
+				alert("Please provide your name!");
+				infoContact["fullName"].focus();
+				return false;
+			}
+			if (infoContact["email"].value == "") {
+				alert("Please provide your Email!");
+				infoContact["email"].focus();
+				return false;
+			}
+
+			return true;
+		}
+	</script>
+</head>
+
+<body>
+	<div class="header" style="position: relative;">
+		<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+			src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1916.9262564429396!2d108.14469998296404!3d16.073141486106277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1624159674763!5m2!1svi!2s;output=embed"></iframe><br><small><a
+				href="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1916.9262564429396!2d108.14469998296404!3d16.073141486106277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1624159674763!5m2!1svi!2s"
+				style="color:#666;text-align:left;font-size:12px"></a></small>
+		<div class="container">
+
+			<div class="header-top">
+				<div class="logo" style="position: absolute; left: 12rem; top: 1rem;">
+					<a href="index.html"><img src="assets/images/logo.png" alt="" /></a>
+				</div>
+				<div class="header_right"
+					style="position: absolute; right: 15rem; top: 1rem; background-color:#ccc; width: 17.2%;">
+					<ul class="social">
+						<li><a href=""> <i class="fb"> </i> </a></li>
+						<li><a href=""><i class="tw"> </i> </a></li>
+						<li><a href=""><i class="utube"> </i> </a></li>
+						<li><a href=""><i class="pin"> </i> </a></li>
+						<li><a href=""><i class="instagram"> </i> </a></li>
+					</ul>
+					<div class="lang_list">
+						<select tabindex="4" class="dropdown">
+							<option value="1" class="label" value="">En</option>
+							<option value="2">Vi</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main" style="padding-top: 0;">
+		<div class="content_box">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="menu_box">
+							<h3 class="menu_head">Menu</h3>
+							<ul class="nav">
+								<li><a href="shop-cat-grid.html">About</a></li>
+								<li><a href="shop-cat-grid.html">Apparel</a></li>
+								<li><a href="shop-cat-grid.html">Surf Apparel</a></li>
+								<li><a href="shop-cat-grid.html">Windsurf</a></li>
+								<li><a href="shop-cat-grid.html">Kitesurf</a></li>
+								<li><a href="shop-cat-grid.html">Accessories</a></li>
+								<li><a href="shop-cat-grid.html">Sale</a></li>
+								<li><a href="shop-cat-grid.html">Brands</a></li>
+								<li><a href="shop-cat-grid.html">Blog</a></li>
+								<li><a href="shop-cat-grid.html">Gadgets</a></li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</div>
+						<div class="side_banner">
+							<div class="banner_img"><img src="assets/images/pic9.jpg" class="img-responsive" alt="" />
+							</div>
+							<div class="banner_holder">
+								<h3>Now <br> is <br> Open!</h3>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class="dreamcrub">
+							<ul class="breadcrumbs">
+								<li class="home">
+									<a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+									<span>&gt;</span>
+								</li>
+								<li class="women">
+									Contact Us
+								</li>
+							</ul>
+							<ul class="previous">
+								<li><a href="index.html">Back to Previous Page</a></li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<div class="singel_right">
+							<div class="lcontact span_1_of_contact">
+								<div class="contact-form">
+									<form name="infoContact" action="index.html" onsubmit="return validate()">
+										<p class="form-item"><label for="fullName">FULL NAME*</label>
+											<input type="text" name="fullName" class="textbox"
+												placeholder="e.g. robert smith" required>
+										</p>
+										<p class="form-item"><label for="email">EMAIL*</label>
+											<input type="text" name="email" class="textbox"
+												placeholder="e.g. name@nome.com"
+												pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+										</p>
+										<p class="form-item"><label for="company">COMPANY</label>
+											<input type="text" class="textbox" name="company"
+												placeholder="e.g. your company (optional)" maxlength="50">
+										</p>
+										<p class="form-item"><label for="subject">SUBJECT</label>
+											<input type="text" name="subject" class="textbox" placeholder="e.g. info" maxlength="150">
+										</p>
+										<p class="form-item"><label for="message">Message</label>
+											<textarea name="message" maxlength="500"></textarea>
+										</p>
+										<input type="submit" id="submit" value="Submit">
+									</form>
+								</div>
+							</div>
+							<div class="contact_grid span_2_of_contact_right">
+								<h3>Address</h3>
+								<div class="address">
+									<i class="pin_icon"></i>
+									<div class="contact_address">
+										Ut interdum tristique est com modo pharetra.
+									</div>
+									<div class="clearfix"></div>
+									<div class="contact_address">
+										<p>Lorem Ipsum is simply dummy text of the printing and over</p>
+									</div>
+								</div>
+								<div class="address">
+									<i class="phone"></i>
+									<div><b>
+											1-900-324-9876
+										</b></div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="address">
+									<i class="mail"></i>
+									<div class="contact_email">
+										<a href="mailto:@example.com"><u>info@surfhouse.com</u></a>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div style="font-size: 0.8rem;">
+									<p>If you have questions about your order or need any general information our
+										customer service team will be happy to assist you</p>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="brands">
+			<ul class="brand_icons">
+				<li><img src='assets/images/icon1.jpg' class="img-responsive" alt="" /></li>
+				<li><img src='assets/images/icon2.jpg' class="img-responsive" alt="" /></li>
+				<li><img src='assets/images/icon3.jpg' class="img-responsive" alt="" /></li>
+				<li><img src='assets/images/icon4.jpg' class="img-responsive" alt="" /></li>
+				<li><img src='assets/images/icon5.jpg' class="img-responsive" alt="" /></li>
+				<li><img src='assets/images/icon6.jpg' class="img-responsive" alt="" /></li>
+				<li class="last"><img src='assets/images/icon7.jpg' class="img-responsive" alt="" /></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<ul class="footer_social">
+			<li><a href="#"> <i class="fb"> </i> </a></li>
+			<li><a href="#"><i class="tw"> </i> </a></li>
+			<li><a href="#"><i class="pin"> </i> </a></li>
+			<div class="clearfix"></div>
+		</ul>
+	</div>
+	</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="footer-grid">
+				<h3>Category</h3>
+				<ul class="list1">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#">About us</a></li>
+					<li><a href="#">Eshop</a></li>
+					<li><a href="#">Features</a></li>
+					<li><a href="#">New Collections</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<div class="footer-grid">
+				<h3>Our Account</h3>
+				<ul class="list1">
+					<li><a href="#">Your Account</a></li>
+					<li><a href="#">Personal information</a></li>
+					<li><a href="#">Addresses</a></li>
+					<li><a href="#">Discount</a></li>
+					<li><a href="#">Orders history</a></li>
+					<li><a href="#">Addresses</a></li>
+					<li><a href="#">Search Terms</a></li>
+				</ul>
+			</div>
+			<div class="footer-grid">
+				<h3>Our Support</h3>
+				<ul class="list1">
+					<li><a href="#">Site Map</a></li>
+					<li><a href="#">Search Terms</a></li>
+					<li><a href="#">Advanced Search</a></li>
+					<li><a href="#">Mobile</a></li>
+					<li><a href="#">Contact Us</a></li>
+					<li><a href="#">Mobile</a></li>
+					<li><a href="#">Addresses</a></li>
+				</ul>
+			</div>
+			<div class="footer-grid">
+				<h3>Newsletter</h3>
+				<p class="footer_desc">Join thousands of other subscribe to our news</p>
+				<div class="search_footer">
+					<form>
+						<input type="text" class="text" value="Insert Email" onfocus="this.value = '';"
+							onblur="if (this.value == '') {this.value = 'Insert Email';}">
+						<input type="submit" value="Submit">
+					</form>
+				</div>
+				<img src="assets/images/payment.png" class="img-responsive" alt="" />
+			</div>
+			<div class="footer-grid footer-grid_last">
+				<h3>About Us</h3>
+				<p class="footer_desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+					liqula
+					eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+					ridiculus mus. Donec quam felis, ultricies nec, pelientesque eu, pretium quis, sem.
+				</p>
+				<p class="f_text">Phone: &nbsp;&nbsp;&nbsp;1-999-342-9876</p>
+				<p class="email">Email: &nbsp;&nbsp;&nbsp;<span><a
+							href="mailto@example.com">info@Surfhouse.com</a></span></p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<div class="footer_bottom">
+		<div class="container">
+			<div class="copy">
+				<p>Copyright &copy; 2014 Surfhouse . All Rights Reserved</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

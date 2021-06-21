@@ -1,0 +1,101 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "imageUrl": "assets/images/pic1.jpg",
+      "title": "Lorem Ipsum 2013",
+      "price": 99
+    },
+    {
+      "id": 2,
+      "imageUrl": "assets/images/pic2.jpg",
+      "title": "Lorem Ipsum 2014",
+      "price": 99
+    },
+    {
+      "id": 3,
+      "imageUrl": "assets/images/pic3.jpg",
+      "title": "Lorem Ipsum 2015",
+      "price": 99
+    },
+    {
+      "id": 4,
+      "imageUrl": "assets/images/pic4.jpg",
+      "title": "Lorem Ipsum 2016",
+      "price": 99
+    },
+    {
+      "id": 5,
+      "imageUrl": "assets/images/pic5.jpg",
+      "title": "Lorem Ipsum 2017",
+      "price": 99
+    },
+    {
+      "id": 6,
+      "imageUrl": "assets/images/pic6.jpg",
+      "title": "Lorem Ipsum 2018",
+      "price": 99
+    },
+    {
+      "id": 7,
+      "imageUrl": "assets/images/pic7.jpg",
+      "title": "Lorem Ipsum 2019",
+      "price": 99
+    },
+    {
+      "id": 8,
+      "imageUrl": "assets/images/pic8.jpg",
+      "title": "Lorem Ipsum 2020",
+      "price": 99
+    },
+    {
+      "id": 9,
+      "imageUrl": "assets/images/pic9.jpg",
+      "title": "Lorem Ipsum 2021",
+      "price": 99
+    },
+    {
+      "id": 10,
+      "imageUrl": "assets/images/pic10.jpg",
+      "title": "Lorem Ipsum 2022",
+      "price": 99
+    },
+    {
+      "id": 11,
+      "imageUrl": "assets/images/pic11.jpg",
+      "title": "Dior 2021",
+      "price": 99
+    },
+    {
+      "id": 12,
+      "imageUrl": "assets/images/pic12.jpg",
+      "title": "Dior 2022",
+      "price": 99
+    },
+    {
+      "id": 13,
+      "imageUrl": "assets/images/pic12.jpg",
+      "title": "Dior 2022",
+      "price": 99
+    },
+    {
+      "id": 14,
+      "imageUrl": "assets/images/pic12.jpg",
+      "title": "Dior 2022",
+      "price": 99
+    },
+    {
+      "id": 15,
+      "imageUrl": "assets/images/pic12.jpg",
+      "title": "Dior 2022",
+      "price": 99
+    }
+  ],
+  "cart": [
+    {
+      "productId": "4",
+      "quantity": "7",
+      "id": 2
+    }
+  ]
+}

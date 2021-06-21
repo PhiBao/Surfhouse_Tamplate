@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Surfhouse Product Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/header.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/nav-bar.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/footer.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--webfont-->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet"
+        type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900" rel="stylesheet"
+        type="text/css" />
+    <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split("&"),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split("=");
+
+                if (sParameterName[0] === sParam) {
+                    return typeof sParameterName[1] === undefined
+                        ? true
+                        : decodeURIComponent(sParameterName[1]);
+                }
+            }
+            return false;
+        };
+
+        $(document).ready(function () {
+            localStorage.clear();
+            $.get("http://localhost:3000/products", function (data, status) {
+                var data = JSON.parse(JSON.stringify(data));
+                var id = getUrlParameter("id");
+                var res = $.grep(data, function (e) {
+                    return e.id == id;
+                });
+                localStorage.setItem("productId", res[0].id);
+                localStorage.setItem("quantity", 1);
+
+                $("#main-image").attr("src", res[0].imageUrl);
+                $("#title").html(res[0].title);
+                $("#price").html("$. " + res[0].price);
+
+                for (let i = 0; i < 3; i++) {
+                    $("#alsoLike").append(
+                        '<div class="col_1_of_3 span_1_of_3">' +
+                        '<div class="view view-first">' +
+                        '<a href="product-page.html?id=' +
+                        data[i].id +
+                        '"><div class="inner_content clearfix">' +
+                        '<div class="product_image">' +
+                        '<img src="' +
+                        data[i].imageUrl +
+                        '" class="img-responsive" alt="description" />' +
+                        '<div class="mask">' +
+                        '<div class="info">Quick View</div>' +
+                        "</div>" +
+                        '<div class="product_container">' +
+                        '<div class="cart-left">' +
+                        '<p class="title">' +
+                        data[i].title +
+                        "</p></div>" +
+                        '<div class="price">$.' +
+                        data[i].price +
+                        "</div>" +
+                        '<div class="clearfix"></div>' +
+                        "</div></div></div></a></div>"
+                    );
+                    $("#recentView").append(
+                        '<div class="col_1_of_3 span_1_of_3">' +
+                        '<div class="view view-first">' +
+                        '<a href="product-page.html?id=' +
+                        data[i].id +
+                        '"><div class="inner_content clearfix">' +
+                        '<div class="product_image">' +
+                        '<img src="' +
+                        data[i].imageUrl +
+                        '" class="img-responsive" alt="description" />' +
+                        '<div class="mask">' +
+                        '<div class="info">Quick View</div>' +
+                        "</div>" +
+                        '<div class="product_container">' +
+                        '<div class="cart-left">' +
+                        '<p class="title">' +
+                        data[i].title +
+                        "</p></div>" +
+                        '<div class="price">$.' +
+                        data[i].price +
+                        "</div>" +
+                        '<div class="clearfix"></div>' +
+                        "</div></div></div></a></div>"
+                    );
+                }
+            });
+        });
+
+        var buyItem = function (productId) {
+            $.ajax({
+                url: "http://localhost:3000/cart",
+                type: "POST",
+                dataType: "json",
+                data: { productId: localStorage.getItem("productId"),
+                        quantity: localStorage.getItem("quantity")
+             },
+                success: function (d) {
+                    localStorage.clear();
+                    location.href = "index.html";
+                },
+                error: function () {
+                    alert("Error please try again");
+                },
+            });
+        };
+
+        var decrease = function () {
+            var result = document.getElementById('quantity');
+            var qty = result.value;
+            if (!isNaN(qty) && qty > 1) result.value--;
+            localStorage.setItem("quantity", result.value);
+            return false;
+        }
+
+        var increase = function () {
+            var result = document.getElementById('quantity');
+            var qty = result.value;
+            if (!isNaN(qty)) result.value++;
+            localStorage.setItem("quantity", result.value);
+            return false;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="header" style="background: url(assets/images/surfer.jpg) no-repeat center top;">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <a href="../index.html"><img src="assets/images/logo.png" alt="" /></a>
+                </div>
+                <div class="header_right">
+                    <ul class="social">
+                        <li>
+                            <a href=""> <i class="fb"> </i> </a>
+                        </li>
+                        <li>
+                            <a href=""><i class="tw"> </i> </a>
+                        </li>
+                        <li>
+                            <a href=""><i class="utube"> </i> </a>
+                        </li>
+                        <li>
+                            <a href=""><i class="pin"> </i> </a>
+                        </li>
+                        <li>
+                            <a href=""><i class="instagram"> </i> </a>
+                        </li>
+                    </ul>
+                    <div class="lang_list">
+                        <select tabindex="4" class="dropdown">
+                            <option value="1" class="label" value="">En</option>
+                            <option value="2">Vi</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="apparel_box">
+                <ul class="login">
+                    <li class="login_text"><a href="#">Login</a></li>
+                    <li class="wish"><a href="cart.html">Wish List</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+                <div class="cart_bg">
+                    <ul class="cart">
+                        <i class="cart_icon"></i>
+                        <p class="cart_desc">
+                            $1459.50<br /><span class="yellow">2 items</span>
+                        </p>
+                        <div class="clearfix"></div>
+                    </ul>
+                    <ul class="product_control_buttons">
+                        <li>
+                            <a href="#"><img src="assets/images/close.png" alt="" /></a>
+                        </li>
+                        <li><a href="#">Edit</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <ul class="quick_access">
+                    <li class="view_cart"><a href="cart.html">View Cart</a></li>
+                    <li class="check"><a href="checkout.html">Checkout</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+                <div class="search">
+                    <input type="text" value="Search" onfocus="this.value = '';"
+                        onblur="if (this.value == '') {this.value = 'Search';}" />
+                    <input type="submit" value="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content_box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="menu_box">
+                            <h3 class="menu_head">Menu</h3>
+                            <ul class="nav">
+                                <li><a href="shop-cat-grid.html">About</a></li>
+                                <li><a href="shop-cat-grid.html">Apparel</a></li>
+                                <li><a href="shop-cat-grid.html">Surf Apparel</a></li>
+                                <li><a href="shop-cat-grid.html">Windsurf</a></li>
+                                <li><a href="shop-cat-grid.html">Kitesurf</a></li>
+                                <li><a href="shop-cat-grid.html">Accessories</a></li>
+                                <li><a href="shop-cat-grid.html">Sale</a></li>
+                                <li><a href="shop-cat-grid.html">Brands</a></li>
+                                <li><a href="shop-cat-grid.html">Blog</a></li>
+                                <li><a href="shop-cat-grid.html">Gadgets</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <h3 class="menu_head">Category Options</h3>
+                            <ul class="category_nav">
+                                <li><a href="shop-cat-grid.html">Men</a></li>
+                                <li><a href="shop-cat-grid.html">Women</a></li>
+                                <li><a href="shop-cat-grid.html">Kids</a></li>
+                                <li><a href="shop-cat-grid.html">Wetsuits</a></li>
+                                <li><a href="shop-cat-grid.html">Outerwear</a></li>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <h3 class="menu_head">Brand Options</h3>
+                            <ul class="category_nav">
+                                <li><a href="shop-cat-grid.html">Billabong</a></li>
+                                <li><a href="shop-cat-grid.html">Element</a></li>
+                                <li><a href="shop-cat-grid.html">o'neill</a></li>
+                                <li><a href="shop-cat-grid.html">Oakley</a></li>
+                                <li><a href="shop-cat-grid.html">Reef</a></li>
+                                <li><a href="shop-cat-grid.html">Quiksilver</a></li>
+                                <li><a href="shop-cat-grid.html">Ripcurl</a></li>
+                                <li><a href="shop-cat-grid.html">Jackss</a></li>
+                            </ul>
+                        </div>
+                        <div class="tags">
+                            <h4 class="tag_head">Tags Widget</h4>
+                            <ul class="tags_links">
+                                <li><a href="shop-cat-grid.html">Kitesurf</a></li>
+                                <li><a href="shop-cat-grid.html">Super</a></li>
+                                <li><a href="shop-cat-grid.html">Duper</a></li>
+                                <li><a href="shop-cat-grid.html">Theme</a></li>
+                                <li><a href="shop-cat-grid.html">Men</a></li>
+                                <li><a href="shop-cat-grid.html">Women</a></li>
+                                <li><a href="shop-cat-grid.html">Equipment</a></li>
+                                <li><a href="shop-cat-grid.html">Best</a></li>
+                                <li><a href="shop-cat-grid.html">Accessories</a></li>
+                                <li><a href="shop-cat-grid.html">Men</a></li>
+                                <li><a href="shop-cat-grid.html">Apparel</a></li>
+                                <li><a href="shop-cat-grid.html">Super</a></li>
+                                <li><a href="shop-cat-grid.html">Duper</a></li>
+                                <li><a href="shop-cat-grid.html">Theme</a></li>
+                                <li><a href="shop-cat-grid.html">Responsiv</a></li>
+                                <li><a href="shop-cat-grid.html">Women</a></li>
+                                <li><a href="shop-cat-grid.html">Equipment</a></li>
+                            </ul>
+                            <a href="#" class="link1">View all tags</a>
+                        </div>
+                        <div class="side_banner">
+                            <div class="banner_img">
+                                <img src="assets/images/pic9.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="banner_holder">
+                                <h3>
+                                    Now <br />
+                                    is <br />
+                                    Open!
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="dreamcrub">
+                            <ul class="breadcrumbs">
+                                <li class="home">
+                                    <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                                    <span>&gt;</span>
+                                </li>
+                                <li class="home">
+                                    &nbsp; Apparel&nbsp; <span>&gt;</span>&nbsp;
+                                </li>
+                                <li class="home">
+                                    &nbsp; &nbsp;Women <span>&gt;</span>&nbsp;
+                                </li>
+                                <li class="women">Peekey Cropped</li>
+                            </ul>
+                            <ul class="previous">
+                                <li><a href="index.html">Back to Previous Page</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="singel_right">
+                            <div class="labout span_1_of_a1">
+                                <img id="main-image" class="img-responsive" alt="main image" />
+                                <div class="sub-image">
+                                    <img src="assets/images/small1.gif" />
+                                    <img src="assets/images/small2.jpg" />
+                                    <img src="assets/images/small3.jpg" />
+                                </div>
+                            </div>
+                            <div class="cont1 span_2_of_a1">
+                                <h1 id="title"></h1>
+                                <ul class="rating">
+                                    <li>
+                                        <a class="product-rate" href="#"> <label> </label></a>
+                                        <span> </span>
+                                    </li>
+                                    <li><a href="#">1 Review(s) Add Your Review</a></li>
+                                    <div class="clearfix"></div>
+                                </ul>
+                                <div class="price_single">
+                                    <span class="actual" id="price"></span>
+                                    <div class="price-sub">
+                                        <p>
+                                            Product code: <b>257</b><br />Availability:
+                                            <b>In stock</b>
+                                        </p>
+                                    </div>
+                                </div>
+                                <h2 class="quick">Quick Overview:</h2>
+                                <p class="quick_desc">
+                                    The timeless Luxembourg sneaker is reinterpreted in iconic
+                                    Monogram canvas with smooth calf-leather trim. The sleek,
+                                    simple design of this sneaker is elevated by refined
+                                    detailing, such as the embossed Louis Vuitton signature on
+                                    the tongue and back, and the Monogram-Flower motifs debossed
+                                    on the outsole.
+                                </p>
+                                <ul class="size">
+                                    <h3>Size</h3>
+                                    <li><a href="#">25</a></li>
+                                    <li><a href="#">26</a></li>
+                                    <li><a href="#">27</a></li>
+                                    <li><a href="#">28</a></li>
+                                    <li><a href="#">29</a></li>
+                                    <li><a href="#">30</a></li>
+                                    <li><a href="#">31</a></li>
+                                    <li><a href="#">32</a></li>
+                                    <li><a href="#">33</a></li>
+                                </ul>
+                                <ul class="size">
+                                    <h3>Length</h3>
+                                    <li><a href="#">32</a></li>
+                                    <li><a href="#">34</a></li>
+                                </ul>
+                                <div class="last-item">
+                                    <div class="buttons_added">
+                                        <input class="minus is-form" onclick="decrease();" type="button" value="-">
+                                        <input aria-label="quantity" class="input-qty" max="100" min="0"
+                                            id='quantity' name='quantity' type="number" value="1">
+                                        <input onclick="increase();" class="plus is-form" type="button" value="+">
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-danger" onclick="buyItem();">
+                                            ADD TO CART
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            + Add to Wishlist<br />+ Add to Compare<br />+ Email to
+                                            a Friend
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="sap_tabs">
+                            <div id="horizontalTab" style="display: block; width: 100%; margin: 0px">
+                                <ul class="resp-tabs-list">
+                                    <li class="resp-tab-item resp-tab-active">
+                                        <span>Product Description</span>
+                                    </li>
+                                    <li class="resp-tab-item">
+                                        <span>Additional Information</span>
+                                    </li>
+                                    <li class="resp-tab-item"><span>Reviews</span></li>
+                                    <li class="resp-tab-item"><span>Product Tags</span></li>
+                                    <div class="clear"></div>
+                                </ul>
+                                <div class="resp-tabs-container">
+                                    <p>
+                                        Inspired by the Spring-Summer 2021 show, this piece
+                                        celebrated the House's new Distorted Damier signature.
+                                        Reproduced as a woven jacquard motif on cotton fabric, the
+                                        pattern adorns a classic denim shape in a regular fit. Old
+                                        gold hardware and clipped collar corners complete the
+                                        look. Louis Vuitton is committed to improving global
+                                        cotton farming practices, with the Better Cotton
+                                        Initiative (BCI).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="like">You Might Also Like</h3>
+                        <ul id="alsoLike"></ul>
+                        <h3 class="recent">Recently Viewed</h3>
+                        <ul id="recentView"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ul class="footer_social">
+                <li>
+                    <a href="#"> <i class="fb"> </i> </a>
+                </li>
+                <li>
+                    <a href="#"><i class="tw"> </i> </a>
+                </li>
+                <li>
+                    <a href="#"><i class="pin"> </i> </a>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <h3>Category</h3>
+                <ul class="list1">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Eshop</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">New Collections</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-grid">
+                <h3>Our Account</h3>
+                <ul class="list1">
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Personal information</a></li>
+                    <li><a href="#">Addresses</a></li>
+                    <li><a href="#">Discount</a></li>
+                    <li><a href="#">Orders history</a></li>
+                    <li><a href="#">Addresses</a></li>
+                    <li><a href="#">Search Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-grid">
+                <h3>Our Support</h3>
+                <ul class="list1">
+                    <li><a href="#">Site Map</a></li>
+                    <li><a href="#">Search Terms</a></li>
+                    <li><a href="#">Advanced Search</a></li>
+                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Addresses</a></li>
+                </ul>
+            </div>
+            <div class="footer-grid">
+                <h3>Newsletter</h3>
+                <p class="footer_desc">
+                    Join thousands of other subscribe to our news
+                </p>
+                <div class="search_footer">
+                    <form>
+                        <input type="text" class="text" value="Insert Email" onfocus="this.value = '';"
+                            onblur="if (this.value == '') {this.value = 'Insert Email';}" />
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
+                <img src="assets/images/payment.png" class="img-responsive" alt="" />
+            </div>
+            <div class="footer-grid footer-grid_last">
+                <h3>About Us</h3>
+                <p class="footer_desc">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                    commodo liqula eget dolor. Aenean massa. Cum sociis natoque
+                    penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Donec quam felis, ultricies nec, pelientesque eu, pretium quis, sem.
+                </p>
+                <p class="f_text">Phone: &nbsp;&nbsp;&nbsp;1-999-342-9876</p>
+                <p class="email">
+                    Email: &nbsp;&nbsp;&nbsp;<span><a href="mailto@example.com">info@Surfhouse.com</a></span>
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="copy">
+                <p>Copyright &copy; 2014 Surfhouse . All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
