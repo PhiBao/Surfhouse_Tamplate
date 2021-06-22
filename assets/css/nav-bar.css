@@ -106,3 +106,41 @@ ul.article_links li a {
   line-height: 1.8em;
   font-family: "Roboto", sans-serif;
 }
+@media (max-width: 1366px) {
+}
+@media (max-width: 1280px) {
+}
+@media (max-width: 1024px) {
+  .tags {
+    padding: 1em;
+  }
+  ul.tags_links li {
+    margin: 6px 1px;
+  }
+}
+@media (max-width: 800px) {
+  .side_banner .banner_holder {
+    left: -29em;
+  }
+  .apparel_box {
+    width: 27%;
+  }
+}
+@media (max-width: 640px) {
+  h3.menu_head {
+    padding: 1em 0 1em 3em;
+  }
+}
+@media (max-width: 480px) {
+  .side_banner .banner_holder {
+    left: -11em;
+  }
+  .apparel_box {
+    width: 41%;
+  }
+}
+@media (max-width: 320px) {
+  .apparel_box {
+    width: 64%;
+  }
+}

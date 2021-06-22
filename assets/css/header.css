@@ -463,3 +463,184 @@ ul.quick_access li.check {
   background: #ee4a02;
   color: #fff;
 }
+
+/*--responsive design--*/
+@media (max-width: 1366px) {
+}
+@media (max-width: 1280px) {
+}
+@media (max-width: 1024px) {
+  .logo {
+    margin-left: 2em;
+  }
+  .slider-prev {
+    left: 54em;
+  }
+
+  .slider-wrapper {
+    margin: 0;
+    padding: 0;
+    float: right;
+  }
+  .header_right {
+    width: 36%;
+  }
+  .welcome_box h2 {
+    font-size: 1.5em;
+  }
+  .banner_right h1 {
+    font-size: 3.2em;
+  }
+  .banner_right p {
+    font-size: 1em;
+  }
+  .search input[type="text"] {
+    width: 84.22%;
+  }
+  .header-top {
+    padding: 0.7em 0 3em;
+  }
+  .logo {
+    margin-left: 2em;
+  }
+  .welcome_box {
+    padding: 4em 1.4em;
+  }
+  .welcome_box p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .banner_right h1 {
+    font-size: 2em;
+  }
+  .banner_right p {
+    font-size: 0.85em;
+  }
+  .slider-prev {
+    left: 41em;
+  }
+  .bannertop_box {
+    width: 27%;
+  }
+  ul.quick_access,
+  ul.login {
+    padding: 5px 10px;
+  }
+  .search input[type="text"] {
+    width: 82.5%;
+  }
+  .welcome_box h2 {
+    font-size: 1.2em;
+  }
+  .welcome_box p {
+    font-size: 14px;
+  }
+  .welcome_box {
+    padding: 2em 1.4em;
+  }
+  .banner_btn {
+    padding: 10px 20px;
+    margin-top: 2em;
+  }
+  .header-top {
+    padding: 0.7em 0 2em;
+  }
+  .header_right {
+    width: 39%;
+  }
+  .header {
+    background-size: 100% 100%;
+  }
+}
+@media (max-width: 640px) {
+  .banner_right {
+    width: 55%;
+    padding-right: 4em;
+    margin: 0;
+  }
+  .slider-prev {
+    left: 33em;
+  }
+  .bannertop_box {
+    width: 31%;
+  }
+  .header_right {
+    width: 48%;
+    margin-top: 3em;
+  }
+  .slider-pagination a {
+    width: 30px;
+  }
+  .search input[type="text"] {
+    width: 81.5%;
+  }
+  .welcome_box {
+    display: none;
+  }
+  .banner_right p {
+    font-size: 0.8125em;
+  }
+  .logo {
+    margin-left: 1em;
+  }
+  .banner_right h1 {
+    font-size: 1.7em;
+  }
+  .header {
+    background-size: 100%;
+    padding-bottom: 1em;
+  }
+  .slider-pagination {
+    bottom: 0em;
+  }
+  .banner_btn {
+    padding: 8px 15px;
+    margin-top: 1em;
+    font-size: 0.8125em;
+  }
+  .slider-pagination {
+    bottom: -2px;
+  }
+}
+@media (max-width: 480px) {
+  .slider-prev {
+    left: 23em;
+  }
+  .banner_right {
+    display: none;
+  }
+  .bannertop_box {
+    width: 100%;
+    float: left;
+    padding-right: 15em;
+  }
+  .header {
+    background-size: 100% 100%;
+    padding-bottom: 1em;
+  }
+}
+@media (max-width: 320px) {
+  .logo img {
+    width: 55%;
+  }
+  ul.social {
+    margin: 0;
+  }
+  .bannertop_box {
+    width: 100%;
+    float: left;
+    padding-right: 8em;
+  }
+  .slider-prev {
+    left: 13em;
+  }
+  .slider-pagination {
+    right: 26%;
+    bottom: 0px;
+  }
+  .logo {
+    margin-left: 0em;
+  }
+}
